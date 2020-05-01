@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      p {
+        text-align: center;
+        font-size: 60px;
+        margin-top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>PomPals</h1>
+    <h4>Timer</h4>
+    <button id="start">Start Pom</button>
+    <p id="timer"></p>
+  </body>
+  <script>
+    const startTimer = () => {
+
+      const start = Date.now();
+      const duration = (60 * 25);
+
+      setInterval(() => {
+        const now = Date.now();
+        const diff = duration - (((Date.now() - start) / 1000) | 0);
+        
+        let minutes = (diff / 60) | 0;
+        let seconds = (diff % 60) | 0;
+
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+      
+        document.getElementById('timer').innerHTML = minutes + ':' + seconds;
+      }, 1000);
+    }
+
+    const el = document.getElementById('start');
+    el.addEventListener('click', startTimer, false);
+  </script>
+</html>

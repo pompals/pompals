@@ -1,0 +1,33 @@
+{
+  "name": "pompals",
+  "version": "0.0.1",
+  "description": "Focus and productivity with a social twist.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pompals/pompals.git"
+  },
+  "keywords": [
+    "pomodoro",
+    "pals",
+    "focus",
+    "pom",
+    "work",
+    "friends"
+  ],
+  "author": "dendog&majorrincs",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/pompals/pompals/issues"
+  },
+  "homepage": "https://github.com/pompals/pompals#readme",
+  "devDependencies": {
+    "electron": "^8.2.5"
+  },
+  "dependencies": {
+    "menubar": "^8.0.2"
+  }
+}
