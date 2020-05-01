@@ -1,11 +1,11 @@
 {
   "name": "pompals",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Focus and productivity with a social twist.",
   "private": false,
   "main": "main.js",
   "scripts": {
-    "dev": "NODE_ENV=dev vue-cli-service serve & sleep 10 && NODE_ENV=dev electron main.js",
+    "dev": "NODE_ENV=dev vue-cli-service serve & sleep 10 && NODE_ENV=dev electron app.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
@@ -31,6 +31,7 @@
   "dependencies": {
     "core-js": "^3.6.4",
     "menubar": "^8.0.2",
+    "peerjs": "^1.2.0",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6",
     "vuex": "^3.1.3"
