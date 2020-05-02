@@ -8,6 +8,22 @@
   </div>
 </template>
 
+<script>
+import { mapActions } from 'vuex';
+import { types } from './store';
+
+export default {
+  methods: {
+    ...mapActions({
+      fetchPeerId: types.FETCH_PEER_ID
+    })
+  },
+  mounted: function() {
+    this.fetchPeerId();
+  }
+};
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
