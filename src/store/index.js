@@ -9,6 +9,7 @@ export const types = {
   GET_PEER_ID: 'GET_PEER_ID',
 
   // mutations
+  MUTATION_INIT_STORE: 'MUTATION_INIT_STORE',
   MUTATION_SET_PEER_ID: 'MUTATION_SET_PEER_ID',
   MUTATION_SET_PEER_CLIENT: 'MUTATION_SET_PEER_CLIENT',
 
@@ -17,15 +18,24 @@ export const types = {
   CONNECT_TO_PEER: 'CONNECT_TO_PEER'
 };
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     peerId: '',
     client: {}
   },
+
   getters: {
     [types.GET_PEER_ID]: state => state.peerId
   },
+
   mutations: {
+    [types.MUTATION_INIT_STORE](state) {
+      if (localStorage.getItem('store')) {
+        this.replaceState(
+          Object.assign(state, JSON.parse(localStorage.getItem('store')))
+        );
+      }
+    },
     [types.MUTATION_SET_PEER_ID](state, peerId) {
       state.peerId = peerId;
     },
@@ -33,10 +43,11 @@ export default new Vuex.Store({
       state.client = client;
     }
   },
+
   actions: {
     [types.FETCH_PEER_ID]({ commit }) {
       const peer = new Peer({ debug: 3 });
-      peer.on('open', (id) => {
+      peer.on('open', id => {
         commit(types.MUTATION_SET_PEER_ID, id);
         commit(types.MUTATION_SET_PEER_CLIENT, peer);
       });
@@ -56,3 +67,10 @@ export default new Vuex.Store({
   },
   modules: {}
 });
+
+// https://www.mikestreety.co.uk/blog/vue-js-using-localstorage-with-the-vuex-store
+store.subscribe((mutation, state) => {
+  localStorage.setItem('store', JSON.stringify(state));
+});
+
+export default store;

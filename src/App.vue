@@ -2,7 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Pom</router-link> |
-      <router-link to="/pals">Pals</router-link>
+      <router-link to="/pals">Pals</router-link> |
+      <router-link to="/account">Account</router-link>
     </div>
     <router-view />
   </div>
@@ -19,6 +20,7 @@ export default {
     })
   },
   mounted: function() {
+    this.$store.commit('initialiseStore');
     this.fetchPeerId();
   }
 };
@@ -26,15 +28,11 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
 }
 
 #nav a {

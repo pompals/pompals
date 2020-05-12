@@ -1,20 +1,26 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Pom from "../views/Pom.vue";
-import Pals from "../views/Pals.vue";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Pom from '../views/Pom.vue';
+import Pals from '../views/Pals.vue';
+import Account from '../views/Account.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Pom",
+    path: '/',
+    name: 'Pom',
     component: Pom
   },
   {
-    path: "/pals",
-    name: "Palss",
+    path: '/pals',
+    name: 'Pals',
     component: Pals
+  },
+  {
+    path: '/account',
+    name: 'Account',
+    component: Account
   }
 ];
 
