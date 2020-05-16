@@ -1,46 +1,47 @@
 <template>
   <div>
     <p>Your code:</p>
-    <p>{{ palCode }}</p>
+    <p>{{ userId }}</p>
 
     <p>Your pals:</p>
     <ul>
-      <li v-for="pal in pals" :key="pal.id">
-        {{ pal.name }} -- {{ pal.status }}
+      <li v-for="(value, key) in pomPals" :key="key">
+        {{ key }} -- {{ value }}
       </li>
     </ul>
 
     <p>Add pals:</p>
-    <input v-model="addPalCode" placeholder="add new pal...">
-    <button v-on:click="addNewPal">ADD</button>
+    <input v-model="newPalId" placeholder="add new pal..." />
+    <button v-on:click="addPomPal(newPalId)">ADD</button>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+import { types } from '../store';
+
 export default {
   name: 'Account',
   data() {
     return {
-      palCode: 'dendog-8712',
-      addPalCode: '',
-      pals: [
-        {
-          id: 'majorrincs--8712',
-          name: 'majorrinc',
-          status: 'online'
-        }
-      ]
+      newPalId: ''
     };
   },
   methods: {
-    addNewPal: function() {
-      const name = this.addPalCode.split('-')[0];
-      this.pals.push({
-        name,
-        id: this.addPalCode,
-        status: 'offline'
-      });
-    }
+    ...mapActions({
+      addPomPal: types.ADD_POM_PAL
+    })
+    // addPomPal() {
+    // this.addPomPalAction();
+    // this.newPalId = '';
+    // e.preventDefault();
+    // }
+  },
+  computed: {
+    ...mapGetters({
+      userId: types.GET_USER_ID,
+      pomPals: types.GET_POM_PALS
+    })
   }
 };
 </script>

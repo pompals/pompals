@@ -10,17 +10,20 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapMutations } from 'vuex';
 import { types } from './store';
 
 export default {
   methods: {
     ...mapActions({
       fetchPeerId: types.FETCH_PEER_ID
+    }),
+    ...mapMutations({
+      initStore: types.MUTATION_INIT_STORE
     })
   },
   mounted: function() {
-    this.$store.commit('initialiseStore');
+    this.initStore();
     this.fetchPeerId();
   }
 };
